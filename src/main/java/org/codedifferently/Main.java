@@ -11,5 +11,7 @@ public class Main {
         String customerBudget = input.nextLine();
         System.out.print("Enter a coupon code ");
         String couponCode= input.nextLine();
+
+        //displayReceipt();
     }
 }

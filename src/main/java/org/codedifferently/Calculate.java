@@ -1,5 +1,5 @@
 package org.codedifferently;
 
-public class Reciept {
+public class Calculate {
 
 }
