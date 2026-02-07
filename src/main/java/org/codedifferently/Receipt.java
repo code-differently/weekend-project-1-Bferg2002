@@ -9,8 +9,6 @@ public class Receipt {
         return random.nextInt(1000,10_000);
     }
 
-
-
    // public string
 
     public void displayReceipt(String customerName, String customerBudget, String couponCode){
