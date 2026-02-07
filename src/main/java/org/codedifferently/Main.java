@@ -1,4 +1,5 @@
 package org.codedifferently;
+
 import java.util.*;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,6 +13,9 @@ public class Main {
         System.out.print("Enter a coupon code ");
         String couponCode= input.nextLine();
 
+        ReceiptCalculator calculator= new ReceiptCalculator();
+        Receipt customerReceipt = new Receipt();
+        System.out.println(calculator.calculateBillSubtotal());
         //displayReceipt();
     }
 }
