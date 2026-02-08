@@ -18,28 +18,39 @@ public class ReceiptCalculator {
 
     //takes in the bill amount and returns the tax rate percentage
     public double calcTaxAmount(double billAmt){
-        return billAmt * (random.nextDouble(0.0, 8.25)/100);
+        return Math.round(billAmt * (random.nextDouble(0.0, 8.25)/100));
     }
 
     public boolean isValidCoupon(String couponCode){
         switch (couponCode){
             case "ABC123":
-                discount = 10.00;
                 return true;
             case "123ABC":
-                discount = 20.00;
-                return false;
+                return true;
             case "CODE_DIFFERENTLY":
-                discount = 50.00;
+                return true;
             default:
                 return false;
         }
     }
 
-    public double calcFinalTotal(String couponCode, double firstItemPrice, double secondItemPrice, double thirdItemPrice ){
+    public double getDiscountAmt(String couponCode){
+        switch (couponCode){
+            case "ABC123":
+                return discount = 10.00;
+            case "123ABC":
+                return discount = 20.00;
+            case "CODE_DIFFERENTLY":
+                return discount = 50.00;
+            default:
+                return 0.0;
+        }
+    }
+
+    public double calcFinalTotal(String couponCode, double firstItemPrice, double secondItemPrice, double thirdItemPrice, double budget, double tax){
         double subTotal = calcBillSubtotal(firstItemPrice ,secondItemPrice, thirdItemPrice);
-        double tax = calcTaxAmount(subTotal);
         double finalTotal;
+
         if (isValidCoupon(couponCode)){
              finalTotal = Math.round((subTotal + tax) - discount);
             if (finalTotal < 0){
