@@ -9,16 +9,49 @@ public class Receipt {
         return random.nextInt(1000,10_000);
     }
 
-   public String generateReceiptCode(String customerName ){
-       int index = customerName.indexOf(" ");
-       if (index == -1) {
-           return customerName.toLowerCase() + Integer.toString(random.nextInt(1000,9999));
-       }
+    public String generateReceiptCode(String customerName) {
+        customerName = customerName.trim().toLowerCase();
+        int index = customerName.indexOf(" ");
+        String firstName;
+        String lastName;
 
-       String firstName = customerName.substring(0, 3);
-       String lastName = customerName.substring(index + 1, index + 4);
-       return (firstName + lastName).toLowerCase() + Integer.toString(random.nextInt(1000,9999));
+        if (index == -1) {
+            firstName = customerName;
+            lastName = "";
+        } else {
+            firstName = customerName.substring(0, index);
+            lastName = customerName.substring(index + 1);
+        }
+
+        if (firstName.length() > 3) {
+            firstName = firstName.substring(0, 3);
+        }
+
+        if (lastName.length() > 3) {
+            lastName = lastName.substring(0, 3);
+        }
+
+        return firstName + lastName + random.nextInt(1000, 10_000);
     }
+
+    public void generateReceiptTagline() {
+        int value = random.nextInt(1, 7);
+        if (value % 2 == 0) {
+            System.out.println("Have a WONDERFUL day!");
+        } else {
+            System.out.println("Have a FANTASTIC day!");
+        }
+    }
+
+    public void generateWelcomeMessage(){
+        int value = random.nextInt(1, 7);
+        if (value % 2 != 0) {
+            System.out.println("Welcome to Walmart");
+        } else {
+            System.out.println("Welcome to Target");
+        }
+    }
+
 
     public void displayReceipt(String customerName, double customerBudget, String couponCode){
       //call item price methods from the calculator object.
@@ -30,13 +63,13 @@ public class Receipt {
         double discount = calculator.getDiscountAmt(couponCode);
         double finalTotal = calculator.calcFinalTotal(couponCode, item1, item2, item3, customerBudget, tax);
 
-        System.out.println("Store name: Walmart");
+        generateWelcomeMessage();
         System.out.println("Visit ID: " + generateVistId());
         System.out.println("Receipt Code " + generateReceiptCode(customerName));
         System.out.println("Your Item prices are: " + item1 + ", " + item2 + ", " + item3);
         System.out.println("Subtotal: " + subTotal);
         System.out.println("Tax: " + tax);
-        System.out.println("You have a " + discount + " dollar discount off your bill");
+        System.out.println("You have a $" + discount + " discount off your bill");
         System.out.println("Your final total is " + finalTotal);
 
         if (customerBudget >= finalTotal){
@@ -46,6 +79,7 @@ public class Receipt {
             System.out.println("You are $" + (finalTotal - customerBudget) + " dollars short");
         }
 
+        generateReceiptTagline();
     }
 
 } //ends Receipt class

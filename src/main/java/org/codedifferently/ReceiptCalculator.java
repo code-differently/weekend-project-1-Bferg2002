@@ -5,37 +5,32 @@ import java.util.Random;
 public class ReceiptCalculator {
 
     Random random = new Random();
-   //final String COUPON_CODE = "Abc123";
     double discount;
 
-    public int generateItemPrice(){
-        return random.nextInt(0,101);
+    public int generateItemPrice() {
+        return random.nextInt(0, 101);
     }
 
-    public double calcBillSubtotal(double firstItemPrice, double secondItemPrice, double thirdItemPrice){
+    public double calcBillSubtotal(double firstItemPrice, double secondItemPrice, double thirdItemPrice) {
         return firstItemPrice + secondItemPrice + thirdItemPrice;
     }
 
     //takes in the bill amount and returns the tax rate percentage
-    public double calcTaxAmount(double billAmt){
-        return Math.round(billAmt * (random.nextDouble(0.0, 8.25)/100));
+    public double calcTaxAmount(double billAmt) {
+        return Math.round(billAmt * (random.nextDouble(0.0, 8.25) / 100));
     }
 
-    public boolean isValidCoupon(String couponCode){
-        switch (couponCode){
-            case "ABC123":
-                return true;
-            case "123ABC":
-                return true;
-            case "CODE_DIFFERENTLY":
+    public boolean isValidCoupon(String couponCode) {
+        switch (couponCode) {
+            case "ABC123", "123ABC", "CODE_DIFFERENTLY":
                 return true;
             default:
                 return false;
         }
     }
 
-    public double getDiscountAmt(String couponCode){
-        switch (couponCode){
+    public double getDiscountAmt(String couponCode) {
+        switch (couponCode) {
             case "ABC123":
                 return discount = 10.00;
             case "123ABC":
@@ -47,19 +42,19 @@ public class ReceiptCalculator {
         }
     }
 
-    public double calcFinalTotal(String couponCode, double firstItemPrice, double secondItemPrice, double thirdItemPrice, double budget, double tax){
-        double subTotal = calcBillSubtotal(firstItemPrice ,secondItemPrice, thirdItemPrice);
+    public double calcFinalTotal(String couponCode, double firstItemPrice, double secondItemPrice, double thirdItemPrice, double budget, double tax) {
+        double subTotal = calcBillSubtotal(firstItemPrice, secondItemPrice, thirdItemPrice);
         double finalTotal;
 
-        if (isValidCoupon(couponCode)){
-             finalTotal = Math.round((subTotal + tax) - discount);
-            if (finalTotal < 0){
+        if (isValidCoupon(couponCode)) {
+            finalTotal = Math.round((subTotal + tax) - discount);
+            if (finalTotal < 0) {
                 return 0;
             }
         }
 
         finalTotal = Math.round((subTotal + tax) - discount);
         return finalTotal;
-        }
+    }
 
 }   //ends ReceiptCalculator class

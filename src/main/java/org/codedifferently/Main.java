@@ -12,11 +12,11 @@ public class Main {
         System.out.print("Enter your budget (numbers only) ");
         String customerBudget = input.nextLine();
         System.out.print("Enter a coupon code ");
-        String couponCode = input.nextLine();
+        String couponCode = input.nextLine().toUpperCase();
         System.out.println();
-        System.out.println();
-      //  System.out.println(couponCode);
+
         Receipt customerReceipt = new Receipt();
        customerReceipt.displayReceipt(customerName,Double.parseDouble(customerBudget),couponCode);
     }
+
 }
