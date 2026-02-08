@@ -20,7 +20,7 @@ For the creativity requirement, I made two methods in the receipt class:
 The user enters the following info:
 - Name: Bryant Ferguson
 - Budget: 333 
-- Coupon Code: (the user left it blank as theu didn't have a code to enter)
+- Coupon Code: (the user left it blank as they didn't have a code to enter)
 
 Here is what the output would look like: 
 - Welcome to Walmart
@@ -39,6 +39,11 @@ The following concepts were used:
 - Math methods such as Math.round
 - String methods such as substring, length, trim, and toLowerCase
 - Switch and if/else statements
-- 
+- Random class methods such as nextDouble and nextInt
+- Object creation using the new keyword 
+- Collecting user input using the Scanner class methods such as nextLine
+- Cycling between using print and println methods based on how I wanted things formatted
+- Organize logic across multiple classes
+
 
 

@@ -1,14 +1,17 @@
 package org.codedifferently;
-import java.util.Random;
+import java.util.Random; //Imports the random class
 
 public class Receipt {
-    Random random = new Random();
-    ReceiptCalculator calculator = new ReceiptCalculator();
 
+    Random random = new Random(); //Creates a Random object named "random"
+    ReceiptCalculator calculator = new ReceiptCalculator(); //Creates a ReceiptCalculator object named "calculator"
+
+    //Returns a random number ranging from 1000 to 9999
     public int generateVistId(){
         return random.nextInt(1000,10_000);
     }
 
+    //Returns the receipt code consisting of the user's name and a random number ranging from 1000 to 9999
     public String generateReceiptCode(String customerName) {
         customerName = customerName.trim().toLowerCase();
         int index = customerName.indexOf(" ");
@@ -34,15 +37,7 @@ public class Receipt {
         return firstName + lastName + random.nextInt(1000, 10_000);
     }
 
-    public void generateReceiptTagline() {
-        int value = random.nextInt(1, 7);
-        if (value % 2 == 0) {
-            System.out.println("Have a WONDERFUL day!");
-        } else {
-            System.out.println("Have a FANTASTIC day!");
-        }
-    }
-
+    //Prints out a Welcome message for the receipt based on the value returned from the random number generator
     public void generateWelcomeMessage(){
         int value = random.nextInt(1, 7);
         if (value % 2 != 0) {
@@ -52,9 +47,18 @@ public class Receipt {
         }
     }
 
+    //Prints out a closing message for the receipt based on the value returned from the random number generator
+    public void generateReceiptTagline() {
+        int value = random.nextInt(1, 7);
+        if (value % 2 == 0) {
+            System.out.println("Have a WONDERFUL day!");
+        } else {
+            System.out.println("Have a FANTASTIC day!");
+        }
+    }
 
+    //Prints out all the receipt information based on the values entered in by the user
     public void displayReceipt(String customerName, double customerBudget, String couponCode){
-      //call item price methods from the calculator object.
         double item1 = calculator.generateItemPrice();
         double item2 = calculator.generateItemPrice();
         double item3 = calculator.generateItemPrice();
