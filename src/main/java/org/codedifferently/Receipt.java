@@ -69,13 +69,14 @@ public class Receipt {
 
         generateWelcomeMessage();
         System.out.println("Customer Name: " + customerName);
+        System.out.println("Your budget is $" + customerBudget);
         System.out.println("Visit ID: " + generateVistId());
         System.out.println("Receipt Code " + generateReceiptCode(customerName));
-        System.out.println("Your Item prices are: " + item1 + ", " + item2 + ", " + item3);
-        System.out.println("Subtotal: " + subTotal);
-        System.out.println("Tax: " + tax);
+        System.out.println("Your Item prices are: $" + item1 + ", $" + item2 + ", $" + item3);
+        System.out.println("Subtotal: $" + subTotal);
+        System.out.println("Tax: $" + tax);
         System.out.println("You have a $" + discount + " discount off your bill");
-        System.out.println("Your final total is " + finalTotal);
+        System.out.println("Your final total is $" + finalTotal);
 
         if (customerBudget >= finalTotal){
             System.out.println("You have $" + (customerBudget - finalTotal) + " left in your budget" );

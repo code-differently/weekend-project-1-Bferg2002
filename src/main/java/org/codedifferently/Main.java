@@ -17,6 +17,7 @@ public class Main {
 
         Receipt customerReceipt = new Receipt();    //Creates a new receipt object used to call the receipt methods
         customerReceipt.displayReceipt(customerName,Double.parseDouble(customerBudget),couponCode);     //calls the displayReceipt method to display all the receipt information
+        input.close();
     }
 
 }
