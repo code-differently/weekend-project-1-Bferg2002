@@ -68,6 +68,7 @@ public class Receipt {
         double finalTotal = calculator.calcFinalTotal(couponCode, item1, item2, item3, customerBudget, tax);
 
         generateWelcomeMessage();
+        System.out.println("Customer Name: " + customerName);
         System.out.println("Visit ID: " + generateVistId());
         System.out.println("Receipt Code " + generateReceiptCode(customerName));
         System.out.println("Your Item prices are: " + item1 + ", " + item2 + ", " + item3);
